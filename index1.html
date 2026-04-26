@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Bhakti ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(180deg,#fff3f8 0%, #fdecef 100%);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:460px;
+    background:#ffffff;
+    border-radius:32px;
+    padding:38px 28px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(255,80,140,0.08);
+}
+
+.top-icon{
+    font-size:58px;
+    margin-bottom:10px;
+}
+
+.mini-title{
+    font-size:14px;
+    color:#ff5a94;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:14px;
+}
+
+h1{
+    font-size:2rem;
+    font-weight:800;
+    color:#222;
+    line-height:1.4;
+    margin-bottom:30px;
+}
+
+.buttons{
+    position:relative;
+    width:100%;
+    height:240px;
+}
+
+button{
+    border:none;
+    border-radius:18px;
+    padding:17px 38px;
+    min-width:170px;
+    font-size:19px;
+    font-weight:700;
+    cursor:pointer;
+    font-family:'Poppins',sans-serif;
+    transition:0.25s ease;
+}
+
+/* YES BUTTON */
+.yes-btn{
+    background:linear-gradient(135deg,#ff4d88,#ff6ea9);
+    color:#fff;
+    box-shadow:0 15px 30px rgba(255,77,136,0.25);
+
+    position:absolute;
+    left:50%;
+    top:110px;
+    transform:translateX(-50%);
+}
+
+.yes-btn:hover{
+    transform:translateX(-50%) scale(1.03);
+}
+
+/* NO BUTTON */
+.no-btn{
+    background:#f4f4f4;
+    color:#222;
+    box-shadow:0 10px 20px rgba(0,0,0,0.05);
+
+    position:absolute;
+    left:50%;
+    top:20px;
+    transform:translateX(-50%);
+}
+
+.note{
+    margin-top:8px;
+    font-size:16px;
+    color:#d47a9a;
+    font-style:italic;
+}
+
+/* SUCCESS PAGE */
+.success{
+    display:none;
+}
+
+.success h2{
+    color:#ff3f7f;
+    font-size:2rem;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.success p{
+    color:#666;
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.single-gif{
+    width:100%;
+    max-height:340px;
+    object-fit:cover;
+    border-radius:22px;
+    display:block;
+}
+
+.footer-love{
+    margin-top:18px;
+    color:#ff6b9d;
+    font-size:15px;
+    font-weight:600;
+}
+
+@media(max-width:500px){
+    h1{
+        font-size:1.6rem;
+    }
+
+    button{
+        min-width:145px;
+        font-size:17px;
+        padding:14px 28px;
+    }
+
+    .container{
+        padding:32px 20px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+```
+<!-- PROPOSAL PAGE -->
+<div id="proposal-section">
+
+    <div class="top-icon">🐱💖</div>
+    <div class="mini-title">Special For You ✨</div>
+
+    <h1>
+        Bhakti,<br>
+        will you forever be mine?
+    </h1>
+
+    <div class="buttons">
+
+        <!-- NO BUTTON -->
+        <button id="noBtn" class="no-btn">
+            No 😭🙈
+        </button>
+
+        <!-- YES BUTTON -->
+        <button class="yes-btn" onclick="showSuccess()">
+            Yes 💖
+        </button>
+
+    </div>
+
+    <div class="note">
+        “No” looks like it wants to cry 😭💘
+    </div>
+
+</div>
+
+
+<!-- SUCCESS PAGE -->
+<div id="success-section" class="success">
+
+    <h2>Yayy! You said YES! ❤️</h2>
+    <p>Knew you'd say yes 😍✨</p>
+
+    <img
+        id="mainGif"
+        class="single-gif"
+        src="gifs/gif1.gif"
+        alt="Celebration GIF"
+    >
+
+    <div class="footer-love">
+        Officially the cutest couple now 💘
+    </div>
+
+</div>
+```
+
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+/*
+NO button moves when mouse comes near
+*/
+noBtn.addEventListener("mouseenter", function () {
+    const area = document.querySelector(".buttons");
+
+    const maxX = area.clientWidth - noBtn.offsetWidth;
+    const maxY = area.clientHeight - noBtn.offsetHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+    noBtn.style.transform = "none";
+});
+
+/*
+LOCAL GIFS
+*/
+const gifs = [
+    "gifs/gif1.gif",
+    "gifs/gif2.gif",
+    "gifs/gif3.gif",
+    "gifs/gif4.gif",
+    "gifs/gif5.gif",
+    "gifs/gif6.gif"
+];
+
+let gifIndex = 0;
+let intervalId = null;
+
+/*
+YES CLICK
+*/
+function showSuccess() {
+    document.getElementById("proposal-section").style.display = "none";
+    document.getElementById("success-section").style.display = "block";
+
+    /* local sound */
+    const celebrationSound = new Audio("celebration1.mp3");
+    celebrationSound.volume = 1.0; // maximum volume (100%)
+    celebrationSound.play().catch(() => {});
+
+    /* gif rotation */
+    const mainGif = document.getElementById("mainGif");
+    mainGif.src = gifs[0];
+
+    clearInterval(intervalId);
+
+    intervalId = setInterval(function () {
+        gifIndex++;
+
+        if (gifIndex >= gifs.length) {
+            gifIndex = 0;
+        }
+
+        mainGif.src = gifs[gifIndex];
+
+    }, 2500);
+}
+</script>
+
+</body>
+</html>
